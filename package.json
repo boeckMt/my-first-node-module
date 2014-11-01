@@ -1,0 +1,24 @@
+{
+  "name": "node-browser-log",
+  "version": "0.0.0",
+  "author": "Mathias Boeck <bbmatdd@gmail.com> (https://github.com/boeckMt)",
+  "license": "BSD-2-Clause",
+  "description": "send node console.log through express.js (server) to browser console via script injection",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/boeckMt/my-first-node-module.git"
+  },
+  "keywords": [
+    "nodeJs",
+    "npm"
+  ],
+  "bugs": {
+    "url": "https://github.com/boeckMt/my-first-node-module/issues"
+  },
+  "dependencies": {
+  },
+  "engines": {
+    "node": ">=0.10.25"
+  }
+}
