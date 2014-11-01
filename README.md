@@ -1,25 +1,25 @@
-nodefirebug
-===========
+node-brwoser-log
+================
 
 send console.log from node to browser-console
 
 ## Installation
 
-  npm install nodefirebug --save
+  npm install nodebrwoserlog --save
 
 ## Usage
-  var nfbug = require('nodefirebug');
+  var nbl = require('nodebrwoserlog');
 
   > -
-  nfbug.config({
+  nbl.config({
     "port":6000,
     "type": "json"
   });
 
-  nfbug.log(obj);
+  nbl.log(obj);
 
   > or
-  nfbug.log(obj,6000); //type: "html"
+  nbl.log(obj,6000); //type: "html"
 
   > or
-  nfbug.log(obj); //port: 9090,
+  nbl.log(obj); //port: 9090,
