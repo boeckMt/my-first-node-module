@@ -10,16 +10,15 @@ send console.log from node to browser-console
 ## Usage
   var nbl = require('nodebrwoserlog');
 
-  > -
+  -
   nbl.config({
     "port":6000,
     "type": "json"
   });
-
   nbl.log(obj);
 
-  > or
+  -or
   nbl.log(obj,6000); //type: "html"
 
-  > or
+  -or
   nbl.log(obj); //port: 9090,
