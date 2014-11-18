@@ -24,5 +24,5 @@ send console.log from node to browser-console via local server
   nbl.startServer(); //port: 9090, type: "html"
 
   ### log
-  nbl.log(obj);
-  nbl.log(arr);
+  >nbl.log(obj);
+  >nbl.log(arr);
