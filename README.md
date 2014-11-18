@@ -4,8 +4,7 @@ nodeBrowserLog
 send console.log from node to browser-console via local server
 
 ## Installation
-
-  npm install nodefirebug --save
+  clone it in the folder with your node_modules
 
 ## Usage
   var nbl = require('nodebrowserlog');
