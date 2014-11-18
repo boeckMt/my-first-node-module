@@ -19,10 +19,10 @@ var _log = function(log) {
 var sendRes = function(log,res){
   if(config.type === "html"){
       res.writeHead(200, {'Content-Type': 'text/html'});
-      res.end(new Buffer('<script>console.log(' + JSON.stringify(log) + ')</script>'));
+      res.end(new Buffer('<script>console.log(' + JSON.stringify(log,censor(log)) + ')</script>'));
   }else if(config.type === "json"){
       res.writeHead(200, {'Content-Type': 'application/json'});
-      res.end(JSON.stringify(log));
+      res.end(JSON.stringify(log,censor(log)));
   }else{
     res.writeHead(406);
     res.end("not supported Content-Type!");
@@ -65,16 +65,28 @@ var _config = function(obj){
   }
 };
 
-//------------------------------------------------------------------
-/*
-process.on('uncaughtException', function(err) {
-    // handle the error safely
-    if(err.code === 'EADDRINUSE'){
-        console.log("look if port is already in use!");
+/*** from Eric Muyser (http://stackoverflow.com/users/119301/eric-muyser)***/
+function censor(censor) {
+  var i = 0, str;
+
+  return function(key, value) {
+    if(i !== 0 && typeof(censor) === 'object' && typeof(value) == 'object' && censor == value){
+      return '[Circular]';
     }
-    throw err;
-});
-*/
+
+    if(i >= 29){ // seems to be a harded maximum of 30 serialized objects?
+      str = "Circular structure: ";
+      return str + value;
+    }
+
+    ++i; // so we know we aren't using the original object anymore
+
+    return value;
+  }
+}
+
+//------------------------------------------------------------------
+
 module.exports = {
   log: _log,
   config: _config,
