@@ -25,4 +25,5 @@ send console.log from node to browser-console via local server
 
   ### log
   >nbl.log(obj);
+  
   >nbl.log(arr);
