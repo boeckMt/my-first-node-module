@@ -8,7 +8,8 @@ var http = require('http'),
     logArray = [],
     config = {
     "port": 9090,
-    "type": "html"
+    "type": "html",
+    "depth": 30
 };
 
 
@@ -74,7 +75,7 @@ function censor(censor) {
       return '[Circular]';
     }
 
-    if(i >= 29){ // seems to be a harded maximum of 30 serialized objects?
+    if(i >= config.depth){ // seems to be a harded maximum of 30 serialized objects?
       str = "Circular structure: ";
       return str + value;
     }
