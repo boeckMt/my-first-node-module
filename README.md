@@ -13,7 +13,8 @@ send console.log from node to browser-console via local server
   > option:1
   nbl.config({
     "port":6000,
-    "type": "json"
+    "type": "json",
+	"depth": 10 //how many times to recurse the obj 
   });
   nbl.startServer();
 
