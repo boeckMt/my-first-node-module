@@ -5,11 +5,12 @@
 
 var http = require('http'),
     server,
+    Serializer = require("mousse").Serializer,
     logArray = [],
     config = {
     "port": 9090,
     "type": "html",
-    "depth": 30
+    "depth": null
 };
 
 
@@ -18,12 +19,20 @@ var _log = function(log) {
 };
 
 var sendRes = function(log,res){
+  var str;
+  if(config.depth > 0){
+    str = JSON.stringify(log,censor(log));
+  }else{
+    str = new Serializer().serialize(log);
+  }
+
+
   if(config.type === "html"){
       res.writeHead(200, {'Content-Type': 'text/html'});
-      res.end(new Buffer('<script>console.log(' + JSON.stringify(log,censor(log)) + ')</script>'));
+      res.end(new Buffer('<script>console.log(' + str + ')</script>'));
   }else if(config.type === "json"){
       res.writeHead(200, {'Content-Type': 'application/json'});
-      res.end(JSON.stringify(log,censor(log)));
+      res.end(str);
   }else{
     res.writeHead(406);
     res.end("not supported Content-Type!");

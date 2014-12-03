@@ -17,6 +17,7 @@
     "url": "https://github.com/boeckMt/my-first-node-module/issues"
   },
   "dependencies": {
+    "mousse": "0.3.0"
   },
   "engines": {
     "node": ">=0.10.25"
